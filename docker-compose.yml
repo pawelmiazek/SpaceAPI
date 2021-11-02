@@ -1,0 +1,39 @@
+version: "3.8"
+
+x-base: &base
+  image: space_api
+  volumes:
+    - .:/project/app
+    - static:/project/static
+    - media:/project/media
+  depends_on:
+    - postgres
+  env_file: .env
+
+services:
+  postgres:
+    image: postgres:12.4-alpine
+
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+  django:
+    <<: *base
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    command: runserver
+    ports:
+      - "8000:8000"
+
+  bootstrap:
+    <<: *base
+    command: manage bootstrap
+
+volumes:
+  pg-data:
+  static:
+  media:

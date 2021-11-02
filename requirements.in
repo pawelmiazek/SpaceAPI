@@ -1,0 +1,30 @@
+-i https://pypi.org/simple
+
+django-cors-headers
+django-environ
+drf-yasg
+djangorestframework
+psycopg2
+pytz
+django<4.0,>=3.1
+pyuwsgi
+requests
+
+# dev
+black
+django-debug-toolbar
+django-extensions
+flake8
+flake8-blind-except
+flake8-bugbear
+flake8-debugger
+flake8-isort
+flake8-print
+flake8-quotes
+ipdb
+ipython
+isort
+mypy
+pep8-naming
+pytest
+pytest-django
