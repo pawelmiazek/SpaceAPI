@@ -2,8 +2,10 @@
 
 django-cors-headers
 django-environ
-drf-yasg
+django-filter
 djangorestframework
+djangorestframework-simplejwt
+drf-yasg
 psycopg2
 pytz
 django<4.0,>=3.1
@@ -23,7 +25,7 @@ flake8-print
 flake8-quotes
 ipdb
 ipython
-isort
+isort[requirements_deprecated_finder]
 mypy
 pep8-naming
 pytest

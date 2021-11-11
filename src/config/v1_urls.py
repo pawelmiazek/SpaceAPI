@@ -2,8 +2,10 @@ from django.conf import settings
 from django.urls import path, include
 
 
-# urlpatterns = [path("", include("api.urls"))]
-urlpatterns = []
+urlpatterns = [
+    path("", include("auth_ex.urls")),
+    path("", include("cores.urls")),
+]
 
 if settings.DEBUG:
     from rest_framework import permissions

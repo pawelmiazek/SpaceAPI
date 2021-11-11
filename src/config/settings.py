@@ -29,9 +29,10 @@ INSTALLED_APPS = (
     "rest_framework",
     "rest_framework.authtoken",
     "drf_yasg",
-    "config",
-    "api",
     "django_extensions",
+    "auth_ex",
+    "config",
+    "cores",
 )
 
 MIDDLEWARE = (
@@ -124,4 +125,33 @@ FILE_UPLOAD_DIRECTORY_PERMISSIONS = None
 # --- DATABASE ---
 DATABASES = {
     "default": env.db(default="postgres://postgres:postgres@postgres:5432/postgres")
+}
+
+AUTH_USER_MODEL = "auth_ex.User"
+
+# --- REST FRAMEWORK ---
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_RENDERER_CLASSES": (
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    ),
+    "NON_FIELD_ERRORS_KEY": "errors",
+    "DEFAULT_PAGINATION_CLASS": "config.pagination.StandardResultsSetPagination",
+    "PAGE_SIZE": 20,
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+}
+
+# --- AUTH ---
+SIMPLE_JWT = {
+    "ALGORITHM": "HS256",
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "ACCESS_TOKEN_LIFETIME": timedelta(
+        minutes=env("ACCESS_TOKEN_LIFETIME_MINUTES", default=30)
+    ),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
