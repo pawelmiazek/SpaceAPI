@@ -31,7 +31,7 @@ INSTALLED_APPS = (
     "drf_yasg",
     "config",
     "api",
-    "django_extensions"
+    "django_extensions",
 )
 
 MIDDLEWARE = (
