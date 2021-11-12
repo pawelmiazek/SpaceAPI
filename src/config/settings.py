@@ -16,6 +16,9 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
 SITE_ID = env("SITE_ID", default=1)
 ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
+EXTERNAL_API_URL = env.str(
+    "EXTERNAL_API_URL", default="https://api.spacex.land/graphql/"
+)
 
 INSTALLED_APPS = (
     "django.contrib.admin",
@@ -80,14 +83,6 @@ TEMPLATES = [
         },
     }
 ]
-
-# --- REST FRAMEWORK ---
-REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-    "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
-    "NON_FIELD_ERRORS_KEY": "errors",
-}
-
 
 # --- DEBUG TOOLBAR ---
 ENABLE_DEBUG_TOOLBAR = env.bool("ENABLE_DEBUG_TOOLBAR", default=DEBUG)

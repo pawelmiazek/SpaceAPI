@@ -5,4 +5,4 @@ from .models import Core
 
 @admin.register(Core)
 class CoreAdmin(admin.ModelAdmin):
-    list_display = ("id", "reuse_count", "payload")
+    list_display = ("id", "api_id", "reuse_count", "payload")

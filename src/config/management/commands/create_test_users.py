@@ -13,6 +13,8 @@ class Command(BaseCommand):
                 username=f"test_user{index}",
                 email=f"test_mail{index}@mail.com",
                 password=make_password(f"test_password{index}"),
+                is_staff=True,
+                is_superuser=True,
             )
             for index in range(1, 4)
         ]

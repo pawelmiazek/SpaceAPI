@@ -2,6 +2,7 @@ from rest_framework import mixins, viewsets
 from .models import Core
 from .serializers import CoreSerializer
 from rest_framework.permissions import IsAuthenticated
+from .services import fetch_cores_service
 
 
 class CoreViewSet(
@@ -14,7 +15,8 @@ class CoreViewSet(
     serializer_class = CoreSerializer
 
     def get_queryset(self):
-        if not self.queryset:
-            "fetch_cores"
+        queryset = super().get_queryset()
+        if not queryset:
+            fetch_cores_service.fetch_data(0, False, False, all_cores_to_db=True)
             return Core.objects.all()
-        return self.queryset
+        return queryset

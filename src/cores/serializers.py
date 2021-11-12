@@ -6,4 +6,4 @@ from .models import Core
 class CoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Core
-        fields = ("id", "reuse_count", "payload")
+        fields = ("id", "api_id", "reuse_count", "payload")
