@@ -9,10 +9,8 @@ urlpatterns = [path("admin/", admin.site.urls), path("v1/", include("config.v1_u
 
 
 if settings.DEBUG:
-    import debug_toolbar
 
     urlpatterns += [
-        path(r"__debug__/", include(debug_toolbar.urls)),
         re_path(r"^static/(?P<path>.*)$", views.serve),
         re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
     ]

@@ -15,6 +15,9 @@ elif [ "$1" = 'uwsgi' ]; then
 elif [ "$1" = 'test' ]; then
     shift
     exec pytest $@
+elif [ "$1" = 'djangotest' ]; then
+    shift
+    exec ${MANAGE_CMD} test src/ $@
 elif [ "$1" = 'lint' ]; then
     shift
     OPTS=${@:-'.'}

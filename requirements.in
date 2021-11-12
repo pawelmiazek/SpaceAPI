@@ -23,10 +23,13 @@ flake8-debugger
 flake8-isort
 flake8-print
 flake8-quotes
+factory_boy
 ipdb
 ipython
 isort[requirements_deprecated_finder]
 mypy
 pep8-naming
 pytest
+pytest-cov
 pytest-django
+pytest-freezegun

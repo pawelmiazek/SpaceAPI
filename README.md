@@ -19,6 +19,16 @@ The reason of chosen technology is that they have good community support and off
 
 2. In root directory run `docker-compose up` to build the app.
 
+## Task 1
+
+1. Run `make manage fetch_cores {cores_count(int)} {exclude_unsuccessful(bool)} {exclude_upcoming(bool)}` to fetch list of cores.
+
+## Task 2
+
+1. Run `make manage create_test_users` to create 3 users for testing purposes.
+
+2. API Schema: `/v1/docs/`.
+
 ## Tests
 
 1. Write `make test` to run unit tests.
